@@ -1,0 +1,51 @@
+import React, {useState} from 'react';
+import {Text, View} from 'react-native';
+import tailwind from 'twrnc';
+import {TextInput} from '../Components/text-input';
+import {Button} from '../Components/button';
+
+export const Signup = () => {
+  const [showPassword, _setShowPassword] = useState(false);
+  const [error, _setError] = useState(null);
+
+  return (
+    <View
+      style={tailwind`w-full flex-1 items-center justify-center bg-gray-950`}>
+      {error ? (
+        <View
+          style={tailwind`absolute top-8 w-full bg-red-400 mx-8 max-w-sm p-4 rounded-md`}>
+          <Text style={tailwind`text-gray-50 font-bold`}>
+            Email addresses don't match
+          </Text>
+        </View>
+      ) : null}
+      <View style={tailwind`px-8 w-full max-w-sm`}>
+        <Text
+          style={tailwind`text-5xl font-bold mb-6 text-gray-50 text-center`}>
+          Sign up
+        </Text>
+
+        <View style={tailwind`flex flex-col gap-4 mb-6`}>
+          <TextInput
+            placeholder="Enter email address"
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+
+          <TextInput placeholder="Enter username" autoCapitalize="none" />
+
+          <TextInput
+            placeholder="Enter password"
+            secureTextEntry={!showPassword}
+          />
+
+          <TextInput
+            placeholder="Confirm password"
+            secureTextEntry={!showPassword}
+          />
+        </View>
+        <Button text="Sign up" variant="success" />
+      </View>
+    </View>
+  );
+};
