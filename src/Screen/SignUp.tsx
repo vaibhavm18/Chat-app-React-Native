@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 import tailwind from 'twrnc';
-import {TextInput} from '../Components/text-input';
 import {Button} from '../Components/button';
+import {TextInput} from '../Components/text-input';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../MainStack';
