@@ -34,9 +34,9 @@ export const Button = ({
 
   const variants = {
     default: {
-      bg: tailwind`bg-gray-900 dark:bg-gray-100`,
-      hover: tailwind`bg-gray-900 dark:bg-gray-200`,
-      text: tailwind`text-gray-50 dark:text-gray-900`,
+      bg: tailwind`dark:bg-gray-900 bg-gray-100`,
+      hover: tailwind`dark:bg-gray-900 bg-gray-200`,
+      text: tailwind`dark:text-gray-50 text-gray-900`,
     },
     success: {
       bg: tailwind`bg-green-700`,

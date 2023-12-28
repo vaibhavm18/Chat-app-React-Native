@@ -21,7 +21,16 @@ export default function MainStack() {
           component={Home}
           options={{header: () => null}}
         />
-        <Stack.Screen name="Notification" component={Notification} />
+        <Stack.Screen
+          name="Notification"
+          component={Notification}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: 'white',
+          }}
+        />
       </Stack.Navigator>
     </>
   );
