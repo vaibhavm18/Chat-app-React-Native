@@ -1,5 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import ChatRoom from './Screen/ChatRoom';
 import Home from './Screen/Home';
 import Notification from './Screen/Notification';
 
@@ -8,6 +9,7 @@ export type RootStackParamList = {
   Notification: undefined;
   Login: undefined;
   Signup: undefined;
+  ChatRoom: undefined;
 };
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -30,6 +32,11 @@ export default function MainStack() {
             },
             headerTintColor: 'white',
           }}
+        />
+        <Stack.Screen
+          name="ChatRoom"
+          component={ChatRoom}
+          options={{header: () => null}}
         />
       </Stack.Navigator>
     </>

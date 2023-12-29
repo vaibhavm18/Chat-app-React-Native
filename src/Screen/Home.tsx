@@ -13,7 +13,7 @@ type TabType = {
 };
 const Tab = createMaterialTopTabNavigator<TabType>();
 
-type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation}: HomeProps) {
   const onPress = () => {
@@ -30,7 +30,10 @@ export default function Home({navigation}: HomeProps) {
           tabBarStyle: {backgroundColor: 'black'},
         }}>
         <Tab.Screen name="personal" component={Personal} />
-        <Tab.Screen name="groups" component={Groups} />
+        <Tab.Screen
+          name="groups"
+          component={() => <Groups navigation={navigation} />}
+        />
       </Tab.Navigator>
     </>
   );
