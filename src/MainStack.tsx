@@ -9,7 +9,7 @@ export type RootStackParamList = {
   Notification: undefined;
   Login: undefined;
   Signup: undefined;
-  ChatRoom: undefined;
+  ChatRoom: {id: string};
 };
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();

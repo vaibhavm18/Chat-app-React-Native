@@ -1,22 +1,37 @@
+import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
+import {CommonActions} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import tailwind from 'twrnc';
 import {Button} from '../Components/button';
 import ChatUser from '../Components/chat-user';
 import CreateGroup from '../Components/create-group';
+import {TabType} from './Home';
 
-// type GroupProps = NativeStackScreenProps<RootStackParamList, "">
+export type GroupsProps = MaterialTopTabScreenProps<TabType, 'groups'>;
 
-export default function Groups({navigation}) {
+interface ExtendGroupProps extends GroupsProps {
+  // changeScreen: (id: string) => void;
+}
+
+export default function Groups({navigation}: ExtendGroupProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const handelModel = () => setIsVisible(prev => !prev);
-  const changeScreen = () => {
-    navigation.push('ChatRoom');
+
+  const changeScreen = (id: string) => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'ChatRoom',
+        params: {id},
+      }),
+    );
   };
+
   return (
     <>
       <ScrollView style={tailwind`bg-black py-4 px-3`}>
-        <ChatUser username="Vaibhava " changeScreen={changeScreen} />
+        <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
+        <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
         <View style={tailwind`flex flex-row justify-center gap-6`}>
           <Button text="Create Group" onPress={handelModel} />
           <Button text="Join Group" />

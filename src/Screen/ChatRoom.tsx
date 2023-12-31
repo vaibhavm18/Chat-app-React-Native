@@ -1,10 +1,16 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import tailwind from 'twrnc';
+import ChatBox from '../Components/chat';
+import ChatInput from '../Components/chat-input';
+import Profile from '../Components/profile';
 
 export default function ChatRoom() {
   return (
-    <View className="bg-green-400 text-red-400">
-      <Text>ChatRoom</Text>
+    <View style={tailwind`bg-black h-full border border-white flex`}>
+      <Profile />
+      <ChatBox />
+      <ChatInput />
     </View>
   );
 }
