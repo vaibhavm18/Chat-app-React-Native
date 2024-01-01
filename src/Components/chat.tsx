@@ -1,9 +1,29 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {Text, View} from 'react-native';
 import tailwind from 'twrnc';
+import ProfileImg from './profile-img';
 
-export default function ChatBox() {
+type Props = {
+  username: string;
+  time: string;
+  message: string;
+  date: string;
+};
+
+export default function Chat({message, time, date, username}: Props) {
   return (
-    <ScrollView style={tailwind`flex-grow border border-red-500`}></ScrollView>
+    <View
+      style={tailwind`flex flex-row gap-3 border border-white p-3 mb-3 rounded-2xl `}>
+      <ProfileImg />
+      <View style={tailwind`flex-shrink`}>
+        <View
+          style={tailwind`flex flex-row justify-between items-center w-full`}>
+          <Text>{username}</Text>
+          <Text>{time}</Text>
+          <Text>{date}</Text>
+        </View>
+        <Text style={tailwind``}>{message}</Text>
+      </View>
+    </View>
   );
 }
