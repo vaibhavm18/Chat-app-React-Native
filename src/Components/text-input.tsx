@@ -1,5 +1,4 @@
-import React from 'react';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {TextInput as DefaultTextInput, TextInputProps} from 'react-native';
 import tailwind from 'twrnc';
 
@@ -23,7 +22,7 @@ export const TextInput = ({placeholderTextColor, ...props}: TextInputProps) => {
       onFocus={handleFocus}
       onEndEditing={handleEndEditing}
       style={[
-        tailwind`w-full bg-white border border-gray-200 rounded-md h-12 px-4`,
+        tailwind`w-full bg-white text-black border border-gray-200 rounded-md h-12 px-4`,
         isFocused ? tailwind`border-blue-400` : {},
         props.style,
       ]}

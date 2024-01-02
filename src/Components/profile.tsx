@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
+import Modal from 'react-native-modal';
 import tailwind from 'twrnc';
 import {Button} from './button';
 import ProfileImg from './profile-img';
 
-export default function Profile() {
+type Props = {
+  username: string;
+  typeChat: 'Unfriend' | 'Leave';
+};
+
+export default function Profile({typeChat, username}: Props) {
+  const [isVisible, setIsVisible] = useState(false);
+  const onPress = () => {
+    setIsVisible(prev => !prev);
+  };
   return (
     <>
       <View
@@ -12,10 +22,19 @@ export default function Profile() {
         <Button text="Back" />
         <View style={tailwind`flex flex-row items-center gap-3`}>
           <ProfileImg />
-          <Text>USername</Text>
+          <Text>{username}</Text>
         </View>
-        <Button text="Leave" variant="destructive" />
+        <Button text={typeChat} variant="destructive" onPress={onPress} />
       </View>
+      <Modal isVisible={isVisible}>
+        <View style={tailwind`border border-white py-2 px-4`}>
+          <Text>Are you sure?</Text>
+          <View style={tailwind`flex flex-row justify-center gap-4`}>
+            <Button text={typeChat} variant="destructive" onPress={onPress} />
+            <Button text="Close" variant="success" onPress={onPress} />
+          </View>
+        </View>
+      </Modal>
     </>
   );
 }

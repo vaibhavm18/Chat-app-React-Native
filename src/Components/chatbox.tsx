@@ -3,11 +3,14 @@ import {ScrollView} from 'react-native';
 import tailwind from 'twrnc';
 import Chat from './chat';
 
-export default function ChatBox() {
+type Props = {
+  message: string;
+};
+export default function ChatBox({message}: Props) {
   return (
     <ScrollView style={tailwind`flex-grow`}>
       <Chat
-        message="Hello, God!"
+        message={message}
         date="21/02/2023"
         time="12:06 PM"
         username="Vaibhav"

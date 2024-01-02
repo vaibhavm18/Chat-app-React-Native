@@ -16,7 +16,7 @@ export default function ChatUser({username, changeScreen, id}: Props) {
         changeScreen(id);
       }}>
       <View
-        style={tailwind`flex flex-row items-center gap-4 border border-white py-3 px-2 rounded-2xl mb-4`}>
+        style={tailwind`flex flex-row bg-[#222436] items-center gap-4 border border-white py-3 px-2 rounded-2xl mb-4`}>
         <ProfileImg />
         <Text style={tailwind`text-lg`}>{username}</Text>
       </View>
