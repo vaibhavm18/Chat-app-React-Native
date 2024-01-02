@@ -8,11 +8,11 @@ export default function Notification() {
   const name = 'vaibhav';
   // const nums = [1, 2, 4];
   return (
-    <ScrollView style={tailwind`bg-black text-white flex px-4 pt-4`}>
+    <ScrollView style={tailwind`bg-[#1e2030] text-[#BCD1EF] flex px-4 pt-4`}>
       {nums.map(val => (
         <View
           key={val}
-          style={tailwind`border border-gray-300 rounded-2xl py-4 px-2 mb-4 flex items-center gap-4`}>
+          style={tailwind`bg-[#222436] border border-gray-300 rounded-2xl py-4 px-2 mb-4 flex items-center gap-4`}>
           <Text>
             Accept Friend request from{' '}
             <Text style={tailwind`underline`}>@{name}</Text>{' '}

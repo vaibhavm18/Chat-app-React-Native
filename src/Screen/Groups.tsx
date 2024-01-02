@@ -10,11 +10,7 @@ import {TabType} from './Home';
 
 export type GroupsProps = MaterialTopTabScreenProps<TabType, 'groups'>;
 
-interface ExtendGroupProps extends GroupsProps {
-  // changeScreen: (id: string) => void;
-}
-
-export default function Groups({navigation}: ExtendGroupProps) {
+export default function Groups({navigation}: GroupsProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const handelModel = () => setIsVisible(prev => !prev);
 
@@ -22,7 +18,7 @@ export default function Groups({navigation}: ExtendGroupProps) {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'ChatRoom',
-        params: {id},
+        params: {id, typeOfChat: 'Group'},
       }),
     );
   };

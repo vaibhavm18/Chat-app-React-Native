@@ -18,13 +18,13 @@ export const Tab = createMaterialTopTabNavigator<TabType>();
 export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation}: HomeProps) {
-  const onPress = () => {
+  const handelNotification = () => {
     navigation.push('Notification');
   };
 
   return (
     <>
-      <Header onPress={onPress} />
+      <Header handelNotification={handelNotification} />
       <Tab.Navigator
         screenOptions={{
           tabBarLabelStyle: {
