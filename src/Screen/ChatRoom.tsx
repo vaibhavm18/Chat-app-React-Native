@@ -1,6 +1,7 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import {GestureResponderEvent} from 'react-native-modal';
 import tailwind from 'twrnc';
 import ChatInput from '../Components/chat-input';
 import ChatBox from '../Components/chatbox';
@@ -12,20 +13,31 @@ export type ChatProps = NativeStackScreenProps<RootStackParamList, 'ChatRoom'>;
 export default function ChatRoom({route}: ChatProps) {
   const username = 'Vaibhav';
   const {id, typeOfChat} = route.params;
-  const [message, setMessage] = useState('Hello, God!');
+  const [messages, setMessages] = useState(['Hello, God!']);
+  const [message, setMessage] = useState('');
 
+  const sendMessage = (event: GestureResponderEvent) => {
+    if (message.trim() === '') {
+      return;
+    }
+    setMessages(prev => [...prev, message]);
+    setMessage('');
+  };
   const handelInput = (text: string) => {
     setMessage(text);
   };
-
   return (
-    <View style={tailwind`bg-black h-full  flex p-2`}>
+    <View style={tailwind`bg-[#1e2030] h-full  flex p-2`}>
       <Profile
         typeChat={typeOfChat === 'Group' ? 'Leave' : 'Unfriend'}
         username={username}
       />
-      <ChatBox message={message} />
-      <ChatInput handelInput={handelInput} message={message} />
+      <ChatBox messages={messages} />
+      <ChatInput
+        handelInput={handelInput}
+        message={message}
+        submitText={sendMessage}
+      />
     </View>
   );
 }

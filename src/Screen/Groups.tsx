@@ -25,7 +25,7 @@ export default function Groups({navigation}: GroupsProps) {
 
   return (
     <>
-      <ScrollView style={tailwind`bg-black py-4 px-3`}>
+      <ScrollView style={tailwind`bg-[#1e2030] py-4 px-3`}>
         <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
         <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
         <View style={tailwind`flex flex-row justify-center gap-6`}>
