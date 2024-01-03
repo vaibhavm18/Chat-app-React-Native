@@ -28,7 +28,7 @@ export default function Profile({typeChat, username}: Props) {
       </View>
       <Modal isVisible={isVisible}>
         <View style={tailwind`border border-white py-2 px-4`}>
-          <Text>Are you sure?</Text>
+          <Text style={tailwind`text-xl text-center mb-4`}>Are you sure?</Text>
           <View style={tailwind`flex flex-row justify-center gap-4`}>
             <Button text={typeChat} variant="destructive" onPress={onPress} />
             <Button text="Close" variant="success" onPress={onPress} />

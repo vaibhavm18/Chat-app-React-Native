@@ -1,20 +1,29 @@
-import React from 'react';
+import React, {RefObject, useRef} from 'react';
 import {ScrollView} from 'react-native';
 import tailwind from 'twrnc';
 import Chat from './chat';
 
 type Props = {
-  message: string;
+  messages: string[];
 };
-export default function ChatBox({message}: Props) {
+export default function ChatBox({messages}: Props) {
+  const scrollViewRef = useRef<ScrollView>();
   return (
-    <ScrollView style={tailwind`flex-grow`}>
-      <Chat
-        message={message}
-        date="21/02/2023"
-        time="12:06 PM"
-        username="Vaibhav"
-      />
+    <ScrollView
+      ref={scrollViewRef as RefObject<ScrollView>}
+      style={tailwind`flex-grow`}
+      onContentSizeChange={() => scrollViewRef?.current?.scrollToEnd()}>
+      {messages.map((val, i) => {
+        return (
+          <Chat
+            key={i}
+            message={val}
+            date="21/02/2023"
+            time="12:06 PM"
+            username="Vaibhav"
+          />
+        );
+      })}
     </ScrollView>
   );
 }
