@@ -6,8 +6,8 @@ const initialState: Chat = {
   oldChats: new Map(),
 };
 
-export const personalChatSlice = createSlice({
-  name: 'personalChat',
+const groupChatSlice = createSlice({
+  name: 'groupChat',
   initialState,
   reducers: {
     addNewChat: (state, {payload}: PayloadAction<message>) => {
@@ -38,5 +38,5 @@ export const personalChatSlice = createSlice({
 export const getMessagesById = (state: Chat, id: string) =>
   state.newChats.get(id);
 
-export const {addNewChat, addOldChats} = personalChatSlice.actions;
-export default personalChatSlice.reducer;
+export const {addNewChat, addOldChats} = groupChatSlice.actions;
+export default groupChatSlice.reducer;

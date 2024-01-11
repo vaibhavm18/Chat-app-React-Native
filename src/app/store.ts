@@ -1,9 +1,17 @@
 import {configureStore} from '@reduxjs/toolkit';
 import authRedcer from '../features/auth/authSlice';
+import groupChatSlice from '../features/group/chatSlice';
+import groupSlice from '../features/group/groupSlice';
+import personalChatSlice from '../features/personal/chatSlice';
+import personalSlice from '../features/personal/personalSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authRedcer,
+    group: groupSlice,
+    personal: personalSlice,
+    personalChats: personalChatSlice,
+    groupChats: groupChatSlice,
   },
 });
 

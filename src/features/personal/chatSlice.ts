@@ -19,7 +19,7 @@ const initialState: Chat = {
   oldChats: new Map(),
 };
 
-export const personalChatSlice = createSlice({
+const personalChatSlice = createSlice({
   name: 'personalChat',
   initialState,
   reducers: {
