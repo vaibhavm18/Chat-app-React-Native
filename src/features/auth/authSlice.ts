@@ -4,14 +4,14 @@ export interface AuthState {
   username: string | null;
   token: string | null;
   isLogin: boolean;
-  img: string | null;
+  _id: string | null;
 }
 
 const initialState: AuthState = {
   isLogin: false,
   token: null,
   username: null,
-  img: null,
+  _id: null,
 };
 
 export const authSlice = createSlice({
@@ -22,14 +22,14 @@ export const authSlice = createSlice({
       state.isLogin = true;
       state.token = payload.token;
       state.username = payload.username;
-      state.img = payload.img;
+      state._id = payload._id;
     },
 
     logout: state => {
       state.isLogin = false;
       state.token = null;
       state.username = null;
-      state.img = null;
+      state._id = null;
     },
   },
 });
