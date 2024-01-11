@@ -10,7 +10,7 @@ import {RootStackParamList} from '../MainStack';
 
 export type ChatProps = NativeStackScreenProps<RootStackParamList, 'ChatRoom'>;
 
-export default function ChatRoom({route}: ChatProps) {
+export default function ChatRoom({route, navigation}: ChatProps) {
   const username = 'Vaibhav';
   const {id, typeOfChat} = route.params;
   const [messages, setMessages] = useState(['Hello, God!']);
@@ -26,9 +26,14 @@ export default function ChatRoom({route}: ChatProps) {
   const handelInput = (text: string) => {
     setMessage(text);
   };
+
+  const goBack = () => {
+    navigation.pop();
+  };
   return (
     <View style={tailwind`bg-[#1e2030] h-full  flex p-2`}>
       <Profile
+        goBack={goBack}
         typeChat={typeOfChat === 'Group' ? 'Leave' : 'Unfriend'}
         username={username}
       />

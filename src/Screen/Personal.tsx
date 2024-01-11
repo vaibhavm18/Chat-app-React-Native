@@ -18,11 +18,19 @@ export default function Personal({navigation}: PersonalProps) {
       }),
     );
   };
+
+  const friendList = () => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'UserList',
+      }),
+    );
+  };
   return (
     <ScrollView style={tailwind`bg-[#1e2030] py-4 px-3`}>
       <ChatUser username="Vaibhav" changeScreen={changeScreen} id="a" />
       <View>
-        <Button text="Add Friend" variant="default" />
+        <Button text="Add Friend" variant="default" onPress={friendList} />
       </View>
     </ScrollView>
   );

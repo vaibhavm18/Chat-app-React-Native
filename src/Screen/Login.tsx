@@ -1,9 +1,9 @@
-import React from 'react';
-import {View, Text} from 'react-native';
-import tailwind from 'twrnc';
-import {TextInput} from '../Components/text-input';
-import {Button} from '../Components/button';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import React from 'react';
+import {Text, View} from 'react-native';
+import tailwind from 'twrnc';
+import {Button} from '../Components/button';
+import {TextInput} from '../Components/text-input';
 import {RootStackParamList} from '../MainStack';
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -22,7 +22,16 @@ export const Login = ({navigation}: LoginProps) => {
           <TextInput placeholder="Enter username" />
           <TextInput placeholder="Enter password" />
         </View>
-        <Button text="Login" variant="success" />
+        <Button
+          text="Login"
+          variant="success"
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'Home'}],
+            });
+          }}
+        />
         <Text style={tailwind`text-center text-lg`}>
           Create Account{' '}
           <Text

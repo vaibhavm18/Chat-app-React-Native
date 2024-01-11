@@ -3,7 +3,9 @@ import React from 'react';
 import ChatRoom from './Screen/ChatRoom';
 import GroupList from './Screen/GroupList';
 import Home from './Screen/Home';
+import {Login} from './Screen/Login';
 import Notification from './Screen/Notification';
+import {Signup} from './Screen/SignUp';
 import UserList from './Screen/UserList';
 
 export type RootStackParamList = {
@@ -42,8 +44,36 @@ export default function MainStack() {
           component={ChatRoom}
           options={{header: () => null}}
         />
-        <Stack.Screen name="UserList" component={UserList} />
-        <Stack.Screen name="GroupList" component={GroupList} />
+        <Stack.Screen
+          name="UserList"
+          component={UserList}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+        <Stack.Screen
+          name="GroupList"
+          component={GroupList}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{header: () => null}}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{header: () => null}}
+        />
       </Stack.Navigator>
     </>
   );

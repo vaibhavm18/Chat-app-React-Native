@@ -23,6 +23,14 @@ export default function Groups({navigation}: GroupsProps) {
     );
   };
 
+  const groupList = () => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'GroupList',
+      }),
+    );
+  };
+
   return (
     <>
       <ScrollView style={tailwind`bg-[#1e2030] py-4 px-3`}>
@@ -30,7 +38,7 @@ export default function Groups({navigation}: GroupsProps) {
         <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
         <View style={tailwind`flex flex-row justify-center gap-6`}>
           <Button text="Create Group" onPress={handelModel} />
-          <Button text="Join Group" />
+          <Button text="Join Group" onPress={groupList} />
         </View>
         <View style={tailwind`w-8 h-12`}></View>
       </ScrollView>

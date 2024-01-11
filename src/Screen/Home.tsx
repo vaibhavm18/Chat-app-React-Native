@@ -24,7 +24,7 @@ export default function Home({navigation}: HomeProps) {
 
   return (
     <>
-      <Header handelNotification={handelNotification} />
+      <Header handelNotification={handelNotification} navigation={navigation} />
       <Tab.Navigator
         screenOptions={{
           tabBarLabelStyle: {

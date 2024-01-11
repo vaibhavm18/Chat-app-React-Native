@@ -8,9 +8,10 @@ import ProfileImg from './profile-img';
 type Props = {
   username: string;
   typeChat: 'Unfriend' | 'Leave';
+  goBack: () => void;
 };
 
-export default function Profile({typeChat, username}: Props) {
+export default function Profile({typeChat, username, goBack}: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const onPress = () => {
     setIsVisible(prev => !prev);
@@ -19,7 +20,7 @@ export default function Profile({typeChat, username}: Props) {
     <>
       <View
         style={tailwind`flex flex-row items-center justify-between px-3 py-2`}>
-        <Button text="Back" />
+        <Button text="Back" onPress={goBack} />
         <View style={tailwind`flex flex-row items-center gap-3`}>
           <ProfileImg />
           <Text>{username}</Text>
