@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export interface GroupType {}
+export interface GroupState {}
 
-const initialState: GroupType = {};
+const initialState: GroupState = {};
 
 export const groupSlice = createSlice({
   name: 'group',

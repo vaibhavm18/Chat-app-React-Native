@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-export interface PersonalType {}
+export interface PersonalState {}
 
-const initialState: PersonalType = {};
+const initialState: PersonalState = {};
 export const personalSlice = createSlice({
   name: 'personal',
   initialState,

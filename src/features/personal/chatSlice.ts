@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-export interface Chat {
+export interface ChatState {
   oldChats: Map<string, message[]>;
   newChats: Map<string, message[]>;
 }
@@ -14,7 +14,7 @@ export type message = {
   chatMessage: string;
 };
 
-const initialState: Chat = {
+const initialState: ChatState = {
   newChats: new Map(),
   oldChats: new Map(),
 };
@@ -48,7 +48,7 @@ const personalChatSlice = createSlice({
   },
 });
 
-export const getMessagesById = (state: Chat, id: string) =>
+export const getMessagesById = (state: ChatState, id: string) =>
   state.newChats.get(id);
 
 export const {addNewChat, addOldChats} = personalChatSlice.actions;
