@@ -5,14 +5,15 @@ type login = {
   username: string;
   password: string;
 };
-export const login = async (data: login) =>
-  await axiosInstance.post('/auth/login', data);
 
 type signup = {
   email: string;
   username: string;
   password: string;
 };
+
+export const login = async (data: login) =>
+  await axiosInstance.post('/auth/login', data);
 
 export const signup = async (data: signup) =>
   await axiosInstance.post('/auth/login', data);
@@ -47,12 +48,13 @@ export const removeFriend = async (id: string) =>
   await axiosInstance.delete(`/personal/remove/${id}`);
 
 // group
-export const allGroups = async () => await axiosInstance.get(`/group`);
 
 type group = {
   group_name: string;
   category: string;
 };
+
+export const allGroups = async () => await axiosInstance.get(`/group`);
 
 export const createGroup = async (group: group) =>
   await axiosInstance.post(`/group/create`, group);
