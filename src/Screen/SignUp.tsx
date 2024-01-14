@@ -1,16 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import tailwind from 'twrnc';
 import {Button} from '../Components/button';
 import {TextInput} from '../Components/text-input';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useSelector} from 'react-redux';
 import {RootStackParamList} from '../MainStack';
+import {isAuthenticated} from '../features/auth/authSlice';
 
 type SignupProps = NativeStackScreenProps<RootStackParamList, 'Signup'>;
+
 export const Signup = ({navigation}: SignupProps) => {
   const [showPassword, _setShowPassword] = useState(false);
   const [error, _setError] = useState(null);
+
+  const isLogin = useSelector(isAuthenticated);
+
+  useEffect(() => {
+    if (isLogin) {
+      navigation.push('Home');
+    }
+  }, [isLogin]);
 
   return (
     <View
