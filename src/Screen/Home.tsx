@@ -1,12 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from '../Components/header';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useSelector} from 'react-redux';
 import {RootStackParamList} from '../MainStack';
-import {isAuthenticated} from '../features/auth/authSlice';
 import Groups from './Groups';
 import Personal from './Personal';
 
@@ -20,17 +18,9 @@ export const Tab = createMaterialTopTabNavigator<TabType>();
 export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation}: HomeProps) {
-  const isLogin = useSelector(isAuthenticated);
-
   const handelNotification = () => {
     navigation.push('Notification');
   };
-
-  useEffect(() => {
-    if (!isLogin) {
-      navigation.push('Login');
-    }
-  }, [isLogin]);
 
   return (
     <>

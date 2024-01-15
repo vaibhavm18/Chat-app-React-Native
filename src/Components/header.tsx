@@ -1,8 +1,10 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import tailwind from 'twrnc';
 import {RootStackParamList} from '../MainStack';
+import {logout} from '../features/auth/authSlice';
 import {Button} from './button';
 
 type Props = {
@@ -10,11 +12,9 @@ type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home', undefined>;
 };
 export default function Header({handelNotification, navigation}: Props) {
-  const logout = () => {
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Login'}],
-    });
+  const dispatch = useDispatch();
+  const onpress = () => {
+    dispatch(logout());
   };
   return (
     <View
@@ -22,7 +22,7 @@ export default function Header({handelNotification, navigation}: Props) {
       <Text style={tailwind`text-2xl`}>Social</Text>
       <View style={tailwind`flex flex-row gap-4`}>
         <Button text="Notification" onPress={handelNotification} />
-        <Button text="Logout" onPress={logout} />
+        <Button text="Logout" onPress={onpress} />
       </View>
     </View>
   );

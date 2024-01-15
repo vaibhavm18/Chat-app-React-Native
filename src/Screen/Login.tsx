@@ -1,23 +1,17 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import tailwind from 'twrnc';
 import {Button} from '../Components/button';
 import {TextInput} from '../Components/text-input';
 import {RootStackParamList} from '../MainStack';
-import {isAuthenticated} from '../features/auth/authSlice';
+import {login} from '../features/auth/authSlice';
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export const Login = ({navigation}: LoginProps) => {
-  const isLogin = useSelector(isAuthenticated);
-
-  useEffect(() => {
-    if (isLogin) {
-      navigation.push('Home');
-    }
-  }, [isLogin]);
+  const dispatch = useDispatch();
 
   return (
     <View
@@ -36,10 +30,14 @@ export const Login = ({navigation}: LoginProps) => {
           text="Login"
           variant="success"
           onPress={() => {
-            navigation.reset({
-              index: 0,
-              routes: [{name: 'Home'}],
-            });
+            dispatch(
+              login({
+                _id: '1234',
+                isLogin: true,
+                token: '1',
+                username: 'asdfds',
+              }),
+            );
           }}
         />
         <Text style={tailwind`text-center text-lg`}>

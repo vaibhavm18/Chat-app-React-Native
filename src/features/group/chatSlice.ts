@@ -2,8 +2,8 @@ import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 import {ChatState, message} from '../personal/chatSlice';
 
 const initialState: ChatState = {
-  newChats: new Map(),
-  oldChats: new Map(),
+  newChats: {},
+  oldChats: {},
 };
 
 const groupChatSlice = createSlice({
@@ -11,32 +11,28 @@ const groupChatSlice = createSlice({
   initialState,
   reducers: {
     addNewChat: (state, {payload}: PayloadAction<message>) => {
-      const hasChat = state.newChats.has(payload.id);
-      if (!hasChat) {
-        state.newChats.set(payload.id, []);
+      if (payload.id in state.newChats) {
+        state.newChats[payload.id].push(payload);
       }
-      state.newChats.get(payload.id)?.push(payload);
+      state.newChats[payload.id] = [payload];
     },
     addOldChats: (state, {payload}: PayloadAction<message[]>) => {
       if (payload.length === 0) {
         return;
       }
 
-      const hasChat = state.newChats.has(payload[0].id);
-
-      if (!hasChat) {
-        state.newChats.set(payload[0].id, []);
+      if (!(payload[0].id in state.newChats)) {
+        state.newChats[payload[0].id] = [];
       }
-
       payload.forEach(val => {
-        state.newChats.get(payload[0].id)?.push(val);
+        state.newChats[payload[0].id].push(val);
       });
     },
   },
 });
 
-export const getMessagesById = (state: ChatState, id: string) =>
-  state.newChats.get(id);
+// export const getMessagesById = (state: ChatState, id: string) =>
+//   state.newChats.get(id);
 
-export const {addNewChat, addOldChats} = groupChatSlice.actions;
+// export const {addNewChat, addOldChats} = groupChatSlice.actions;
 export default groupChatSlice.reducer;
