@@ -48,8 +48,5 @@ const personalChatSlice = createSlice({
   },
 });
 
-// export const getMessagesById = (state: ChatState, id: string) =>
-//   state.newChats.get(id);
-
-// export const {addNewChat, addOldChats} = personalChatSlice.actions;
+export const {addNewChat, addOldChats} = personalChatSlice.actions;
 export default personalChatSlice.reducer;

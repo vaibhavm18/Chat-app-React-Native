@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 export interface PersonalState {}
 
 const initialState: PersonalState = {};
+
 export const personalSlice = createSlice({
   name: 'personal',
   initialState,

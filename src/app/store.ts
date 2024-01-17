@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import authRedcer from '../features/auth/authSlice';
 import groupChatSlice from '../features/group/chatSlice';
 import groupSlice from '../features/group/groupSlice';
+import notificationSlice from '../features/notification/notificationSlice';
 import personalChatSlice from '../features/personal/chatSlice';
 import personalSlice from '../features/personal/personalSlice';
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     personal: personalSlice,
     personalChats: personalChatSlice,
     groupChats: groupChatSlice,
+    notification: notificationSlice,
   },
 });
 

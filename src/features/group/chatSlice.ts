@@ -31,8 +31,5 @@ const groupChatSlice = createSlice({
   },
 });
 
-// export const getMessagesById = (state: ChatState, id: string) =>
-//   state.newChats.get(id);
-
-// export const {addNewChat, addOldChats} = groupChatSlice.actions;
+export const {addNewChat, addOldChats} = groupChatSlice.actions;
 export default groupChatSlice.reducer;

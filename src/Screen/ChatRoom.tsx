@@ -23,6 +23,7 @@ export default function ChatRoom({route, navigation}: ChatProps) {
     setMessages(prev => [...prev, message]);
     setMessage('');
   };
+
   const handelInput = (text: string) => {
     setMessage(text);
   };
@@ -30,8 +31,9 @@ export default function ChatRoom({route, navigation}: ChatProps) {
   const goBack = () => {
     navigation.pop();
   };
+
   return (
-    <View style={tailwind`bg-[#1e2030] h-full  flex p-2`}>
+    <View style={tailwind`bg-[#1e2030] h-full flex p-2`}>
       <Profile
         goBack={goBack}
         typeChat={typeOfChat === 'Group' ? 'Leave' : 'Unfriend'}
