@@ -8,7 +8,7 @@ export interface ChatState {
     [key: string]: message[];
   };
 }
-
+// <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="hi" dir="ltr">Karmanye vadhikaraste Ma Phaleshu Kadachana,<br>Ma Karmaphalaheturbhurma Te Sangostvakarmani <a href="https://t.co/JsUrfaDaqt">https://t.co/JsUrfaDaqt</a> <a href="https://t.co/TPLw5dBxxk">pic.twitter.com/TPLw5dBxxk</a></p>&mdash; aloo paratha (@alooooparatha1) <a href="https://twitter.com/alooooparatha1/status/1747569344349888786?ref_src=twsrc%5Etfw">January 17, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 export type message = {
   id: string;
   user: {
@@ -24,7 +24,7 @@ const initialState: ChatState = {
 };
 
 const personalChatSlice = createSlice({
-  name: 'personalChat',
+  name: 'userChat',
   initialState,
   reducers: {
     addNewChat: (state, {payload}: PayloadAction<message>) => {

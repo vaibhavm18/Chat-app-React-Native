@@ -1,5 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {ChatState, message} from '../personal/chatSlice';
+import {ChatState, message} from '../user/chatSlice';
 
 const initialState: ChatState = {
   newChats: {},
@@ -7,7 +7,7 @@ const initialState: ChatState = {
 };
 
 const groupChatSlice = createSlice({
-  name: 'groupChat',
+  name: 'groupChats',
   initialState,
   reducers: {
     addNewChat: (state, {payload}: PayloadAction<message>) => {

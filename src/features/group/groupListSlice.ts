@@ -7,7 +7,6 @@ export interface GroupState {
 type group = {
   id: string;
   groupname: string;
-  users: number;
 };
 
 const initialState: GroupState = {
@@ -15,10 +14,10 @@ const initialState: GroupState = {
 };
 
 export const groupSlice = createSlice({
-  name: 'groupList',
+  name: 'groups',
   initialState,
   reducers: {
-    addGroup: (state, {payload}: PayloadAction<group[]>) => {
+    addGroupLists: (state, {payload}: PayloadAction<group[]>) => {
       if (payload.length === 0) {
         return;
       }
@@ -26,11 +25,11 @@ export const groupSlice = createSlice({
         state.grops.push(val);
       });
     },
-    removeGroup: (state, {payload}: PayloadAction<group>) => {
+    removeGroupList: (state, {payload}: PayloadAction<group>) => {
       state.grops = state.grops.filter(val => val.id !== payload.id);
     },
   },
 });
 
-export const {addGroup, removeGroup} = groupSlice.actions;
+export const {addGroupLists, removeGroupList} = groupSlice.actions;
 export default groupSlice.reducer;

@@ -3,14 +3,14 @@ import authRedcer from '../features/auth/authSlice';
 import groupChatSlice from '../features/group/chatSlice';
 import groupSlice from '../features/group/groupSlice';
 import notificationSlice from '../features/notification/notificationSlice';
-import personalChatSlice from '../features/personal/chatSlice';
-import personalSlice from '../features/personal/personalSlice';
+import personalChatSlice from '../features/user/chatSlice';
+import userSlice from '../features/user/userSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authRedcer,
     group: groupSlice,
-    personal: personalSlice,
+    personal: userSlice,
     personalChats: personalChatSlice,
     groupChats: groupChatSlice,
     notification: notificationSlice,
