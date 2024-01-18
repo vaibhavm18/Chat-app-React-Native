@@ -6,7 +6,9 @@ export interface UserState {
 
 type user = {
   id: string;
-  groupname: string;
+  username: string;
+  friends: number;
+  groups: number;
 };
 
 const initialState: UserState = {

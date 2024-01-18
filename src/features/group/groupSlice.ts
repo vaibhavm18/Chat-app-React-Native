@@ -7,7 +7,6 @@ export interface GroupState {
 type group = {
   id: string;
   groupname: string;
-  users: number;
 };
 
 const initialState: GroupState = {
@@ -15,7 +14,7 @@ const initialState: GroupState = {
 };
 
 export const groupSlice = createSlice({
-  name: 'groupList',
+  name: 'group',
   initialState,
   reducers: {
     addGroup: (state, {payload}: PayloadAction<group[]>) => {

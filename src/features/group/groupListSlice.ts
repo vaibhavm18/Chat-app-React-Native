@@ -7,20 +7,23 @@ export interface GroupState {
 type group = {
   id: string;
   groupname: string;
+  admin: string;
+  users: number;
 };
 
 const initialState: GroupState = {
   grops: [],
 };
 
-export const groupSlice = createSlice({
-  name: 'groups',
+export const groupListSlice = createSlice({
+  name: 'groupList',
   initialState,
   reducers: {
     addGroupLists: (state, {payload}: PayloadAction<group[]>) => {
       if (payload.length === 0) {
         return;
       }
+      console.log('hi');
       payload.forEach(val => {
         state.grops.push(val);
       });
@@ -31,5 +34,5 @@ export const groupSlice = createSlice({
   },
 });
 
-export const {addGroupLists, removeGroupList} = groupSlice.actions;
-export default groupSlice.reducer;
+export const {addGroupLists, removeGroupList} = groupListSlice.actions;
+export default groupListSlice.reducer;
