@@ -20,10 +20,12 @@ export default function Profile({typeChat, username, goBack}: Props) {
     <>
       <View
         style={tailwind`flex flex-row items-center justify-between px-3 py-2`}>
-        <Button text="Back" onPress={goBack} />
         <View style={tailwind`flex flex-row items-center gap-3`}>
-          <ProfileImg />
-          <Text>{username}</Text>
+          <Button text="Back" onPress={goBack} />
+          <View style={tailwind`flex flex-row gap-2 items-center`}>
+            <ProfileImg />
+            <Text>{username}</Text>
+          </View>
         </View>
         <Button text={typeChat} variant="destructive" onPress={onPress} />
       </View>

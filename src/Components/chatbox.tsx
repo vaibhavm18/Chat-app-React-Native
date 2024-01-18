@@ -11,7 +11,7 @@ export default function ChatBox({messages}: Props) {
   return (
     <ScrollView
       ref={scrollViewRef as RefObject<ScrollView>}
-      style={tailwind`flex-grow`}
+      style={tailwind`flex-grow bg-black rounded-xl p-2`}
       onContentSizeChange={() => scrollViewRef?.current?.scrollToEnd()}>
       {messages.map((val, i) => {
         return (
