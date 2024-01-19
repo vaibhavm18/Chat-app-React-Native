@@ -15,6 +15,10 @@ const initialState: UserState = {
   users: [],
 };
 
+type remove = {
+  id: string;
+};
+
 export const userListSlice = createSlice({
   name: 'userslist',
   initialState,
@@ -27,7 +31,7 @@ export const userListSlice = createSlice({
         state.users.push(val);
       });
     },
-    removeListUser: (state, {payload}: PayloadAction<user>) => {
+    removeListUser: (state, {payload}: PayloadAction<remove>) => {
       state.users = state.users.filter(val => val.id !== payload.id);
     },
   },
