@@ -1,14 +1,34 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {Button} from '../Components/button';
 import Group from '../Components/group';
 import {RootState} from '../app/store';
-import {removeGroupList} from '../features/group/groupListSlice';
+import {addGroupLists, removeGroupList} from '../features/group/groupListSlice';
 import {addGroup} from '../features/group/groupSlice';
+
+const group = [1, 2, 3, 4, 5];
 
 export default function GroupList() {
   const groups = useSelector((state: RootState) => state.groupList.grops);
   const dispatch = useDispatch();
+
+  function populate() {
+    dispatch(
+      addGroupLists(
+        group.map(val => {
+          const num = val * Math.ceil(Math.random() * 100);
+
+          return {
+            admin: `vaibhav${num}`,
+            groupname: `group${num}`,
+            id: `id${num}`,
+            users: num * 10,
+          };
+        }),
+      ),
+    );
+  }
 
   const requestAddGroup = (
     groupname: string,
@@ -35,6 +55,12 @@ export default function GroupList() {
         );
       })}
       <View className="h-20"></View>
+      <Button
+        text="populate"
+        onPress={() => {
+          populate();
+        }}
+      />
     </ScrollView>
   );
 }

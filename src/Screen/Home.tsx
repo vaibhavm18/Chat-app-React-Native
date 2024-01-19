@@ -4,7 +4,6 @@ import Header from '../Components/header';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useDispatch} from 'react-redux';
 import {RootStackParamList} from '../MainStack';
 import Groups from './Groups';
 import Personal from './Personal';
@@ -19,8 +18,6 @@ export const Tab = createMaterialTopTabNavigator<TabType>();
 export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function Home({navigation}: HomeProps) {
-  const dispatch = useDispatch();
-
   const handelNotification = () => {
     navigation.push('Notification');
   };

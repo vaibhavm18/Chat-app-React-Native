@@ -15,10 +15,19 @@ export default function GroupChat({navigation, route}: groupChatProps) {
     navigation.pop();
   };
 
-  const username = 'vaibhav';
+  const remove = (id: string) => {};
+
+  const {id, username} = route.params;
+
   return (
     <View style={tailwind`bg-[#1e2030] h-full flex p-2`}>
-      <Profile typeChat="Leave" goBack={goBack} username={username} />
+      <Profile
+        remove={remove}
+        typeChat="Leave"
+        goBack={goBack}
+        username={username}
+        id={id}
+      />
       <ChatRoom username="vaibhav" />
     </View>
   );

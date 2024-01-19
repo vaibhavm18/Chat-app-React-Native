@@ -47,8 +47,6 @@ export default function Groups({navigation}: GroupsProps) {
             />
           );
         })}
-        <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
-        <ChatUser username="Vaibhava " id="123" changeScreen={changeScreen} />
         <View style={tailwind`flex flex-row justify-center gap-6`}>
           <Button text="Create Group" onPress={handelModel} />
           <Button text="Join Group" onPress={groupList} />

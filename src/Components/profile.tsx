@@ -9,13 +9,23 @@ type Props = {
   username: string;
   typeChat: 'Unfriend' | 'Leave';
   goBack: () => void;
+  remove: (id: string) => void;
+  id: string;
 };
 
-export default function Profile({typeChat, username, goBack}: Props) {
+export default function Profile({
+  typeChat,
+  remove,
+  username,
+  goBack,
+  id,
+}: Props) {
   const [isVisible, setIsVisible] = useState(false);
+
   const onPress = () => {
     setIsVisible(prev => !prev);
   };
+
   return (
     <>
       <View
@@ -33,7 +43,14 @@ export default function Profile({typeChat, username, goBack}: Props) {
         <View style={tailwind`border border-white py-2 px-4`}>
           <Text style={tailwind`text-xl text-center mb-4`}>Are you sure?</Text>
           <View style={tailwind`flex flex-row justify-center gap-4`}>
-            <Button text={typeChat} variant="destructive" onPress={onPress} />
+            <Button
+              text={typeChat}
+              variant="destructive"
+              onPress={async () => {
+                remove(id);
+                goBack();
+              }}
+            />
             <Button text="Close" variant="success" onPress={onPress} />
           </View>
         </View>

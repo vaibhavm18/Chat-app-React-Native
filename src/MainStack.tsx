@@ -19,8 +19,8 @@ export type RootStackParamList = {
   Signup: undefined;
   UserList: undefined;
   GroupList: undefined;
-  PersonalChat: {id: string};
-  GroupChat: {id: string};
+  PersonalChat: {id: string; username: string};
+  GroupChat: {id: string; username: string};
 };
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();

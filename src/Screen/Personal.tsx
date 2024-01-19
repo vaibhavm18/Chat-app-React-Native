@@ -4,6 +4,7 @@ import React from 'react';
 import {ScrollView, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import tailwind from 'twrnc';
+
 import {Button} from '../Components/button';
 import ChatUser from '../Components/chat-user';
 import {RootState} from '../app/store';
@@ -41,7 +42,6 @@ export default function Personal({navigation}: PersonalProps) {
           />
         );
       })}
-      <ChatUser username="Vaibhav" changeScreen={changeScreen} id="a" />
       <View>
         <Button text="Add Friend" variant="default" onPress={friendList} />
       </View>
