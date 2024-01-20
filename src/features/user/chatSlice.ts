@@ -16,6 +16,7 @@ export type message = {
     id: string;
   };
   chatMessage: string;
+  date: string;
 };
 
 const initialState: ChatState = {

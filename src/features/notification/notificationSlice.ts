@@ -13,6 +13,7 @@ const initialState: NotificationState = {
   notifications: [],
 };
 
+type userId = {id: string};
 export const notificationSlice = createSlice({
   name: 'notification',
   initialState,
@@ -25,7 +26,7 @@ export const notificationSlice = createSlice({
         state.notifications.push(val);
       });
     },
-    removeNotification: (state, {payload}: PayloadAction<notification>) => {
+    removeNotification: (state, {payload}: PayloadAction<userId>) => {
       state.notifications = state.notifications.filter(
         val => val.id !== payload.id,
       );

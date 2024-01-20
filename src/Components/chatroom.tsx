@@ -1,33 +1,27 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {GestureResponderEvent} from 'react-native-modal';
+import {message} from '../features/user/chatSlice';
 import ChatInput from './chat-input';
 import ChatBox from './chatbox';
 
 type Props = {
-  username: string;
+  oldMessage: message[];
+  newMessage: message[];
+  message: string;
+  handelInput: (text: string) => void;
+  sendMessage: (event: GestureResponderEvent) => void;
 };
 
-export default function ChatRoom({username}: Props) {
-  const [messages, setMessages] = useState([
-    'Hello, God! asdvkjsdf asdkfjsdfjdsj asdkfjsdf asdkfjsdfj asdkfjd askdfjkdsjfa asdkjfsdkfj',
-  ]);
-
-  const [message, setMessage] = useState('');
-  const sendMessage = (event: GestureResponderEvent) => {
-    if (message.trim() === '') {
-      return;
-    }
-    setMessages(prev => [...prev, message]);
-    setMessage('');
-  };
-
-  const handelInput = (text: string) => {
-    setMessage(text);
-  };
-
+export default function ChatRoom({
+  newMessage,
+  oldMessage,
+  message,
+  handelInput,
+  sendMessage,
+}: Props) {
   return (
     <>
-      <ChatBox messages={messages} />
+      <ChatBox newMessage={newMessage} oldMessage={oldMessage} />
       <ChatInput
         handelInput={handelInput}
         message={message}

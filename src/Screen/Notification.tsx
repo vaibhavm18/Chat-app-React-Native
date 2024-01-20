@@ -1,28 +1,62 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import tailwind from 'twrnc';
 import {Button} from '../Components/button';
+import {RootState} from '../app/store';
+import {
+  addNotification,
+  removeNotification,
+} from '../features/notification/notificationSlice';
 
+const n = [1, 2, 3, 4, 5];
 export default function Notification() {
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-  const name = 'vaibhav';
-  // const nums = [1, 2, 4];
+  const dispatch = useDispatch();
+  const notifications = useSelector(
+    (state: RootState) => state.notification.notifications,
+  );
+
+  function populate() {
+    dispatch(
+      addNotification(
+        n.map(val => ({id: val.toString(), username: `vaibhav${val}`})),
+      ),
+    );
+  }
+
+  function deleteNotification(id: string) {
+    dispatch(removeNotification({id}));
+  }
+
   return (
     <ScrollView style={tailwind`bg-[#1e2030] text-[#BCD1EF] flex px-4 pt-4`}>
-      {nums.map(val => (
+      {notifications.map(val => (
         <View
-          key={val}
+          key={val.id}
           style={tailwind`bg-[#222436] border border-gray-300 rounded-2xl py-4 px-2 mb-4 flex items-center gap-4`}>
           <Text>
             Accept Friend request from{' '}
-            <Text style={tailwind`underline`}>@{name}</Text>{' '}
+            <Text style={tailwind`underline`}>@{val.username}</Text>{' '}
           </Text>
           <View style={tailwind`flex flex-row gap-7`}>
-            <Button text="Accept" variant="success" />
-            <Button text="Decline" variant="destructive" />
+            <Button
+              text="Accept"
+              variant="success"
+              onPress={() => {
+                deleteNotification(val.id);
+              }}
+            />
+            <Button
+              text="Decline"
+              variant="destructive"
+              onPress={() => {
+                deleteNotification(val.id);
+              }}
+            />
           </View>
         </View>
       ))}
+      <Button text="reload" onPress={populate} />
       {/*Bottom padding*/}
       <View style={tailwind`py-4`}></View>
     </ScrollView>

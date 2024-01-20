@@ -13,6 +13,10 @@ const initialState: GroupState = {
   grops: [],
 };
 
+type userId = {
+  id: string;
+};
+
 export const groupSlice = createSlice({
   name: 'group',
   initialState,
@@ -25,7 +29,7 @@ export const groupSlice = createSlice({
         state.grops.push(val);
       });
     },
-    removeGroup: (state, {payload}: PayloadAction<group>) => {
+    removeGroup: (state, {payload}: PayloadAction<userId>) => {
       state.grops = state.grops.filter(val => val.id !== payload.id);
     },
   },
