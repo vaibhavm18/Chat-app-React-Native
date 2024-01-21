@@ -1,4 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {nanoid} from '@reduxjs/toolkit';
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -16,9 +17,11 @@ export type groupChatProps = NativeStackScreenProps<
 >;
 export default function GroupChat({navigation, route}: groupChatProps) {
   const dispatch = useDispatch();
-  const {id, username} = route.params;
+  const {id, groupname} = route.params;
   const [message, setMessage] = useState('');
 
+  const username = useSelector((state: RootState) => state.auth.username);
+  const userId = useSelector((state: RootState) => state.auth._id);
   const oldChats = useSelector(
     (state: RootState) => state.groupChats.oldChats[id],
   );
@@ -43,12 +46,17 @@ export default function GroupChat({navigation, route}: groupChatProps) {
       return;
     }
 
+    if (!username || !userId) {
+      return;
+    }
+
     dispatch(
       addNewChat({
         chatMessage: message,
         date: '',
-        id: '123',
-        user: {id: '1234', username: 'vaibhav'},
+        id,
+        user: {id: userId, username: username},
+        messageId: nanoid(),
       }),
     );
 
@@ -61,7 +69,7 @@ export default function GroupChat({navigation, route}: groupChatProps) {
         remove={remove}
         typeChat="Leave"
         goBack={goBack}
-        username={username}
+        username={groupname}
         id={id}
       />
       <ChatRoom
@@ -70,6 +78,7 @@ export default function GroupChat({navigation, route}: groupChatProps) {
         sendMessage={sendMessage}
         oldMessage={oldChats}
         newMessage={newChats}
+        id={id}
       />
     </View>
   );

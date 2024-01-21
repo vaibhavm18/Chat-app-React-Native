@@ -1,4 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {nanoid} from '@reduxjs/toolkit';
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -39,7 +40,7 @@ export default function PersonalChat({navigation, route}: personalChatProps) {
     setMessage(text);
   };
 
-  const sendMessage = () => {
+  const sendMessage = (userId: string) => {
     if (message.trim() === '') {
       return;
     }
@@ -48,8 +49,9 @@ export default function PersonalChat({navigation, route}: personalChatProps) {
       addNewChat({
         chatMessage: message,
         date: '',
-        id: '123',
-        user: {id: '1234', username: 'vaibhav'},
+        id: userId,
+        user: {id: userId, username: 'vaibhav'},
+        messageId: nanoid(),
       }),
     );
 
@@ -66,6 +68,7 @@ export default function PersonalChat({navigation, route}: personalChatProps) {
         id={id}
       />
       <ChatRoom
+        id={id}
         handelInput={handelInput}
         sendMessage={sendMessage}
         message={message}

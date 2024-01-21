@@ -15,15 +15,15 @@ export default function ChatBox({newMessage, oldMessage}: Props) {
       ref={scrollViewRef as RefObject<ScrollView>}
       style={tailwind`flex-grow bg-black rounded-xl p-2`}
       onContentSizeChange={() => scrollViewRef?.current?.scrollToEnd()}>
-      {oldMessage.length === 0 && newMessage.length === 0 && (
+      {oldMessage?.length === 0 && newMessage?.length === 0 && (
         <View>
           <Text>No messages</Text>
         </View>
       )}
-      {oldMessage.reverse().map(val => {
+      {oldMessage?.reverse().map(val => {
         return (
           <Chat
-            key={val.id}
+            key={val.messageId}
             message={val.chatMessage}
             date="21/02/2023"
             time="12:06 PM"
@@ -31,10 +31,10 @@ export default function ChatBox({newMessage, oldMessage}: Props) {
           />
         );
       })}
-      {newMessage.map(val => {
+      {newMessage?.map(val => {
         return (
           <Chat
-            key={val.id}
+            key={val.messageId}
             message={val.chatMessage}
             date="21/02/2023"
             time="12:06 PM"

@@ -13,8 +13,9 @@ const groupChatSlice = createSlice({
     addNewChat: (state, {payload}: PayloadAction<message>) => {
       if (payload.id in state.newChats) {
         state.newChats[payload.id].push(payload);
+      } else {
+        state.newChats[payload.id] = [payload];
       }
-      state.newChats[payload.id] = [payload];
     },
     addOldChats: (state, {payload}: PayloadAction<message[]>) => {
       if (payload.length === 0) {
@@ -24,6 +25,7 @@ const groupChatSlice = createSlice({
       if (!(payload[0].id in state.newChats)) {
         state.newChats[payload[0].id] = [];
       }
+
       payload.forEach(val => {
         state.newChats[payload[0].id].push(val);
       });

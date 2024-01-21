@@ -1,5 +1,4 @@
 import React from 'react';
-import {GestureResponderEvent} from 'react-native-modal';
 import {message} from '../features/user/chatSlice';
 import ChatInput from './chat-input';
 import ChatBox from './chatbox';
@@ -9,7 +8,8 @@ type Props = {
   newMessage: message[];
   message: string;
   handelInput: (text: string) => void;
-  sendMessage: (event: GestureResponderEvent) => void;
+  sendMessage: (userId: string) => void;
+  id: string;
 };
 
 export default function ChatRoom({
@@ -18,11 +18,13 @@ export default function ChatRoom({
   message,
   handelInput,
   sendMessage,
+  id,
 }: Props) {
   return (
     <>
       <ChatBox newMessage={newMessage} oldMessage={oldMessage} />
       <ChatInput
+        id={id}
         handelInput={handelInput}
         message={message}
         submitText={sendMessage}

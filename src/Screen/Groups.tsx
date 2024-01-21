@@ -13,15 +13,15 @@ import {TabType} from './Home';
 export type GroupsProps = MaterialTopTabScreenProps<TabType, 'groups'>;
 
 export default function Groups({navigation}: GroupsProps) {
-  const groups = useSelector((state: RootState) => state.group.grops);
+  const groups = useSelector((state: RootState) => state.group.groups);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const handelModel = () => setIsVisible(prev => !prev);
 
-  const changeScreen = (id: string, username: string) => {
+  const changeScreen = (id: string, groupname: string) => {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'GroupChat',
-        params: {id, username},
+        params: {id, groupname},
       }),
     );
   };

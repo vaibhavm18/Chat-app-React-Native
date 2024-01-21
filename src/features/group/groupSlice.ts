@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 export interface GroupState {
-  grops: group[];
+  groups: group[];
 }
 
 type group = {
@@ -10,7 +10,7 @@ type group = {
 };
 
 const initialState: GroupState = {
-  grops: [],
+  groups: [],
 };
 
 type userId = {
@@ -26,11 +26,11 @@ export const groupSlice = createSlice({
         return;
       }
       payload.forEach(val => {
-        state.grops.push(val);
+        state.groups.push(val);
       });
     },
     removeGroup: (state, {payload}: PayloadAction<userId>) => {
-      state.grops = state.grops.filter(val => val.id !== payload.id);
+      state.groups = state.groups.filter(val => val.id !== payload.id);
     },
   },
 });
