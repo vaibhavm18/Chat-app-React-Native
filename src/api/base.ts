@@ -1,8 +1,7 @@
 import axios from 'axios';
-import {useSelector} from 'react-redux';
-import {getToken} from '../features/auth/authSlice';
+// import {getToken} from '../features/auth/authSlice';
 
-const API_BASE_URL = 'https://example.com/api';
+const API_BASE_URL = 'https://social-dc1i.onrender.com/api/v1';
 
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -13,11 +12,11 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
-    const token = useSelector(getToken);
+    // const token = useSelector(getToken);
 
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
-    }
+    // if (token) {
+    //   config.headers['Authorization'] = `Bearer ${token}`;
+    // }
 
     return config;
   },

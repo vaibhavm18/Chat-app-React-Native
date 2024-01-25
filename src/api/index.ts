@@ -1,22 +1,42 @@
 import {axiosInstance} from './base';
 
 // auth
-type login = {
+export type loginType = {
   username: string;
   password: string;
 };
 
-type signup = {
+export type signupType = {
   email: string;
   username: string;
   password: string;
 };
 
-export const login = async (data: login) =>
-  await axiosInstance.post('/auth/login', data);
+export const loginCall = async (data: loginType) =>
+  (await axiosInstance.post('/auth/login', data)).data;
 
-export const signup = async (data: signup) =>
-  await axiosInstance.post('/auth/login', data);
+export const health = async () => await axiosInstance.get('/health');
+
+export const signup = async (data: signupType) =>
+  (await axiosInstance.post('/auth/register', data)).data;
+
+async function createAccounts(n: number) {
+  try {
+    for (let i = 0; i < n; i++) {
+      console.log('i', i);
+      const name = 'vaibhav7' + i;
+      await signup({
+        email: name + '@gmail.com',
+        password: '123456',
+        username: name,
+      });
+    }
+  } catch (error) {
+    console.log('error', error);
+  }
+}
+
+createAccounts(100);
 
 export const authenticate = async () =>
   await axiosInstance.get('/auth/authenticate');

@@ -1,28 +1,23 @@
+import {useQuery} from '@tanstack/react-query';
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import tailwind from 'twrnc';
 import {Button} from '../Components/button';
+import {notification} from '../api';
 import {RootState} from '../app/store';
-import {
-  addNotification,
-  removeNotification,
-} from '../features/notification/notificationSlice';
+import {removeNotification} from '../features/notification/notificationSlice';
 
-const n = [1, 2, 3, 4, 5];
 export default function Notification() {
   const dispatch = useDispatch();
+  const {data, isError, isFetched, isLoading} = useQuery({
+    queryKey: ['notification'],
+    queryFn: async () => await notification(),
+  });
+
   const notifications = useSelector(
     (state: RootState) => state.notification.notifications,
   );
-
-  function populate() {
-    dispatch(
-      addNotification(
-        n.map(val => ({id: val.toString(), username: `vaibhav${val}`})),
-      ),
-    );
-  }
 
   function deleteNotification(id: string) {
     dispatch(removeNotification({id}));
@@ -56,7 +51,6 @@ export default function Notification() {
           </View>
         </View>
       ))}
-      <Button text="reload" onPress={populate} />
       {/*Bottom padding*/}
       <View style={tailwind`py-4`}></View>
     </ScrollView>
